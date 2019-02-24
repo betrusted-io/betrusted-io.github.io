@@ -1,0 +1,71 @@
+---
+---
+
+$header-heading-color: #38BA5A;
+$header-bg-color: #FFFFFF;
+$header-bg-color-secondary: #F0FFF0;
+
+@import "{{ site.theme }}";
+
+.page-header {
+    color: $header-heading-color;
+    text-align: center;
+    background-color: $header-bg-color;
+    background-image: linear-gradient(120deg, $header-bg-color-secondary, $header-bg-color);
+
+    @include large {
+	padding: 1rem 1rem;
+    }
+
+    @include medium {
+	padding: 1rem 1rem;
+    }
+
+    @include small {
+	padding: 1rem 1rem;
+    }
+}
+
+.btn-dark {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.2);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0.3rem;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+
+  &:hover {
+      color: rgba(0, 0, 0, 0.8);
+      text-decoration: none;
+      background-color: rgba(0, 0, 0, 0.2);
+      border-color: rgba(0, 0, 0, 0.3);
+  }
+
+  + .btn-dark {
+      margin-left: 1rem;
+  }
+
+  @include large {
+      padding: 0.75rem 1rem;
+  }
+
+  @include medium {
+      padding: 0.6rem 0.9rem;
+      font-size: 0.9rem;
+  }
+
+  @include small {
+      display: block;
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 0.9rem;
+
+      + .btn-dark {
+	  margin-top: 1rem;
+	  margin-left: 0;
+      }
+  }
+}
