@@ -18,6 +18,11 @@
     <meta name="theme-color" content="#157878">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+
+    <link rel="icon" href="/assets/favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" type="image/png" href="/assets/favicon/android-chrome-192x192.png">
+    <link rel="shortcut icon" sizes="196x196" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
   </head>
   <body>
 <!--    <a id="skip-to-content" href="#content">Skip to the content.</a> -->
@@ -27,9 +32,7 @@
       <br>
       <a href="https://betrusted.io"><center><img src="/assets/images/betrusted-banner.png" width="35%"></center></a>
       <!-- <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2> -->
-      {% if site.github.is_project_page %}
-        <a href="{{ site.github.repository_url }}" class="btn-dark">View on GitHub</a>
-      {% endif %}
+      <a href="https://github.com/betrusted-io" class="btn-dark">View on GitHub</a>
       {% if site.show_downloads %}
         <a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
         <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
