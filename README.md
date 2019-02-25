@@ -1,15 +1,18 @@
-betrusted is a security enclave with human-friendly I/O. With
-betrusted, no other computer has access to your private data, not even
-your phone or your laptop.
+betrusted is a security enclave with human-friendly I/O. 
 
 ## The Birds, the Bees, and the Private Keys
 
 A hacked phone or laptop means all of your passwords, private keys,
 authenticator tokens and other secrets are potentially compromised. To
 guard against this, systems are starting to incorporate physically
-distinct "enclaves" (aka secure elements or TPMs). An enclave is like
-having a safe in your house: even if the lock on the front door is
-broken, the thief still can't access the contents of the safe.
+distinct
+"[enclaves](https://developer.apple.com/documentation/security/certificate_key_and_trust_services/keys/storing_keys_in_the_secure_enclave)"
+(aka [secure
+elements](https://www.ledger.fr/2018/12/03/a-closer-look-into-ledger-security-the-secure-element/)
+or [TPMs](https://en.wikipedia.org/wiki/Trusted_Platform_Module)). An
+enclave is like having a safe in your house: even if the lock on the
+front door is broken, the thief still can't access the contents of the
+safe.
 
 Today's enclaves protect only certain cryptographic secrets, such as
 private keys. These enclaves lack human-friendly I/O and must delegate
@@ -51,9 +54,9 @@ Best security practice requires betrusted's full technology stack,
 including silicon, device, OS, and UX, to be open for inspection and
 verification by anyone.
 
-This is a significant engineering effort, spanning multiple disciplines
-across the techology spectrum. We welcome the contributions of all
-open-source developers.
+The depth of this tech stack represents a significant engineering
+effort, spanning multiple disciplines across the techology
+spectrum. We welcome the contributions of all open-source developers.
 
 The project is currently at the feasability and planning stage. The
 current plan divides the project into three phases: a developer-only
@@ -84,15 +87,15 @@ The second phase translates the FPGA design into a proper ASIC
 enclave. This brings about orders of magnitude in power saving and
 improved performance, allowing the hardware to be sleeker while
 supporting a longer battery life. This phase aims to harden the
-codebase, while validating novel technological concepts built into the
-ASIC meant to harden against supply chain attacks.
+codebase, while validating [novel technological
+concepts](https://github.com/betrusted-io/betrusted-wiki/wiki/ASIC-hardening)
+built into the ASIC meant to harden against supply chain attacks.
 
 ![](assets/images/betrusted-concept-2.jpg)
 
 In this concept, betrusted measures in at about 3.5mm thick. Achieving
 such a thin form factor will require developing a novel keyboard
-element and incorporating features such as inductive charging and
-built-in microphones.
+element and incorporating features such as inductive charging.
 
 Read more about the [beta hardware custom SoC](/betrusted-architecture/#custom-soc).
 
