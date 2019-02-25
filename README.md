@@ -115,3 +115,15 @@ wiki](https://github.com/betrusted-io/betrusted-wiki/wiki) for more
 technical information. The main [betrusted github
 repository](https://github.com/betrusted-io) will also begin to fill
 in as more technical details come online.
+
+## Who is behind betrusted?
+
+The betrusted-io github repository's people page [lists the
+developers](https://github.com/orgs/betrusted-io/people) that have [elected to reveal their
+participation
+publicly](https://help.github.com/en/articles/publicizing-or-hiding-organization-membership).
+
+The administrative contact for the betrusted.io project is [Andrew
+'bunnie' Huang](https://en.wikipedia.org/wiki/Andrew_Huang_(hacker))
+([@bunniestudios](https://twitter.com/bunniestudios)/[blog](https://bunniestudios.com)).
+
