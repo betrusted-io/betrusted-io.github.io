@@ -68,7 +68,8 @@ most. Thus, the only secrets in betrusted are the ones you put in it.
 
 The depth of this tech stack represents a significant engineering
 effort, spanning multiple disciplines across the techology
-spectrum. We welcome the contributions of all open-source developers.
+spectrum. We welcome the contributions of all open-source developers:
+please visit [our github repo](https://github.com/betrusted-io/).
 
 The project is currently at the feasability and planning stage. The
 current plan divides the project into three phases: a developer-only
