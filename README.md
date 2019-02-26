@@ -19,34 +19,34 @@ safe.
 Today's enclaves protect only certain cryptographic secrets, such as
 private keys. These enclaves lack human-friendly I/O and must delegate
 the task of rendering and recording information to a less secure
-host. 
+host.
 
 This leads to an important nuance: protecting private keys is not the
-same thing as protecting your private bits. A remotely-controllled
+same thing as protecting your private bits. A remotely-controlled
 keyboard logger can still record your passwords as you type them; a
 screen grabber can still read your messages, photos, and authenticator
 tokens as easily as you can.
 
 Betrusted solves this problem by incorporating easily auditable
-Human-Computer Interaction (HCI) elements to the security enclave, ensuring
-that human-readable secrets are never stored, displayed, or
-transmitted beyond the confines of the betrusted device: betrusted is
-a security enclave with human-friendly I/O.
+Human-Computer Interaction (HCI) elements to the security enclave.
+Betrusted ensures that human-readable secrets are never stored,
+displayed, or transmitted beyond the confines of the betrusted device:
+betrusted is a security enclave with human-friendly I/O.
 
 ## HCI-driven security model
 
 [HCI](https://en.wikipedia.org/wiki/Human%E2%80%93computer_interaction)
 stands for Human-Computer Interaction. It's about making computers
-usable to every day people.
+usable.
 
-People use a wide range of languages. Thus a key challenge for
+Adding human I/O to an enclave means tackling the diversity of human
+language without compromising security. Thus a key challenge for
 betrusted is striking a balance between best security practices and a
 native-language HCI: more features means more attack surfaces, while
 too few features renders the device too difficult to use.
 
 Therefore, correctly scoping the HCI aspect is critical. Betrusted's
-HCI scope includes native-language text messaging support, as well as
-voice messaging.
+HCI scope includes text and voice messaging support.
 
 * The [HCI rationale](/hci-rationale/) page explores the core HCI
 requirements.
@@ -56,15 +56,15 @@ how HCI and security requirements come together into a single device.
 ## Building betrusted
 
 Trust starts with transparency. Food is labelled with their
-ingredients, and subject to routine tests for pathogens. This keeps us
-safe from foodborne illnesses. As long as technology remains a
-black box, we should not be surprised that bad actors can hide
-viruses in our devices. 
+ingredients, and subject to routine tests for quality and
+contamination. This keeps us safe from foodborne illnesses. As long as
+technology remains a black box, we should not be surprised that bad
+actors can hide viruses in our devices.
 
 Betrusted aims to build a full technology stack, including silicon,
 device, OS, and UX, that is open for inspection and verification by
 anyone: experts, governments, and users are free to audit, critique,
-confirm and improve its ability to keep secrets. You, the user, gets
+confirm and improve its ability to keep secrets. You, the user, get
 to pick which version or provider for betrusted you trust the
 most. Thus, the only secrets in betrusted are the ones you put in it.
 
@@ -81,10 +81,16 @@ Learn more about the [betrusted development plan](/dev-plan/).
 
 ## Betrusted device concept
 
-**Betrusted is not a phone**: it is a secure enclave with auditable input
-and output surfaces. Betrusted relies on sharing your existing
+**Betrusted is not a phone**: it is a secure enclave with auditable
+input and output surfaces. Betrusted relies on sharing your existing
 connectivity -- such as your phone or cable modem -- to access the
-Internet. The first generation of betrusted will incorporate a WiFi
+Internet. Say you're on the road and you want to securely message a
+friend. You would tether betrusted to your phone's wifi, so that the
+phone is just an untrusted relay for encrypted messages coming too and
+from betrusted. The only place the decrypted messages will ever appear
+is on the trusted screen of a betrusted device.
+
+The first generation of betrusted will incorporate a WiFi
 interface. Read more about how [betrusted handles
 networking](/betrusted-architecture/#network-interface) to understand
 how your betrusted can be extended to handle your favorite network
@@ -112,7 +118,7 @@ betrusted device might eventually look like.
 The alpha hardware is implemented using a FPGA containing a RISC-V
 soft core. The primary goal of this phase is to solidify the specs of
 the eventual betrusted ASIC through development and testing on a
-looks-ilke, works-like prototype.
+looks-like, works-like prototype.
 
 ![](assets/images/betrusted-concept-1.jpg)
 
@@ -147,7 +153,7 @@ Read more about the [beta hardware custom SoC](/betrusted-architecture/#custom-s
 
 ### Consumer-Ready Product
 
-The final phase is a "consumer ready product". As the name implies,
+The final phase is a "consumer-ready product". As the name implies,
 the product will be ready to use out of the box, with special effort
 put into the out of box user experience and documentation such that
 anyone can set up and use betrusted to communicate, transact, and
