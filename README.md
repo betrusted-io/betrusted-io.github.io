@@ -1,4 +1,6 @@
-Betrusted is a security enclave with human-friendly I/O. 
+Betrusted is a security enclave with human-friendly I/O. It's a
+companion to your existing smartphone or laptop that facilitates
+secure communication and storage. 
 
 ## The Birds, the Bees, and the Private Keys
 
