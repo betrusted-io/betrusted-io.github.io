@@ -2,7 +2,7 @@ Betrusted is a secure enclave with a display and keyboard. It's a
 protected place for your private matters.
 
 <!--<iframe width="800" height="450" src="https://bunniefoo.com/betrusted/media/betrusted_intro_450p.mp4" frameborder="0"></iframe>-->
-<video width="800" controls><source src="https://raw.githubusercontent.com/betrusted-io/betrusted-io.github.io/master/assets/media/betrusted_intro_450p.mp4" type="video/mp4"></video>
+<video width="800" controls autoplay><source src="https://raw.githubusercontent.com/betrusted-io/betrusted-io.github.io/master/assets/media/betrusted_intro_450p.mp4" type="video/mp4"></video>
 [1080p version](https://bunniefoo.com/betrusted/media/betrusted_intro_1080p.mp4)
 
 ## The Birds, the Bees, and the Private Keys
