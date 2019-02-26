@@ -28,7 +28,9 @@ what would be nice to achieve. A layer providing asynchronous voice
 messages or possibly fully synchronous voice calling helps to
 accommodate languages that lack
 [IME](https://en.wikipedia.org/wiki/Input_method) support as well as
-individuals who are illiterate.
+individuals who are illiterate. Voice support also helps provide
+a minimum viable product for users speaking languages that have
+yet to receive developer support for a fully-functional input method.
 
 Bitmap images are considered a "nice to have" feature that can most
 likely be included without introducing significant additional attack
@@ -42,6 +44,14 @@ implementing streaming video; the enclave would end up more a video
 processor than an enclave! This does not mean to rule out video ever
 being a feature of the system, but at least for the FPGA dev board and
 initial SoC implementation, video support is definitely out of scope.
+
+To sum up the "why voice, but not video" question: voice is
+computationally easy, works asynchronously, has a low bit rate, and
+provides a backstop for users that lack a high-functioning input
+method. The effort-benefit tradeoff is quite favorable. Video is a
+couple orders of magnitude more computationally difficult than voice,
+requires synchronous, high-bitrate connections, and provides
+incremental communication benefits over voice.
 
 ## Physical keyboard
 

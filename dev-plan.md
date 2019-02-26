@@ -30,10 +30,8 @@ Thus the general strategy is to take a three-step approach to system development
 
 1. **Alpha** Developer-oriented FPGA-based system. "Almost looks-like,
 works-like" prototypes in the form factor of a phone case. Priced in
-the several hundred dollar range, produced in small (100's)
-quantities. Not resistant to "evil maid" attacks but should be fully
-resistant to remote exploits and more importantly should embody all
-the UX elements expected of the final product.
+the few hundred dollar range, produced in small (100's)
+quantities. 
 
     Primary focus is on vetting the code base and validating the ASIC
     design parameters.  Concurrent variations testing several keyboard
@@ -42,16 +40,17 @@ the UX elements expected of the final product.
     successful crowdfunding campaign and adequate developer interest in
     the OS and UX aspects.
 
-    Phase 1 prototypes are explicitly not evil-maid attack
+    Phase 1 prototypes are explicitly _not_ evil-maid attack
     resistant, but should offer hermetic remote-exploit resistance at
     the software level even against APTs.
 
-    Phase 1 should be repeated until the user experience is _just right_
-    before moving to phase 2, because there is no second chance at phase 2.
-    It will cost a couple million dollars to spin the custom SoC.
+    Phase 1 will iterate until the user experience is _just right_
+    before moving to phase 2, because there is no second chance at
+    phase 2.  It will cost a couple million dollars to spin the custom
+    SoC.
 
 2. **Beta** Custom SoC-based system for early adopters. Priced in the
-$200 range, produced in sub-10k quantities. Resistant to "evil maid"
+$200-300 range, produced in sub-10k quantities. Resistant to "evil maid"
 attacks, extremely good battery life, thin form factor that is easy to
 carry around in the form factor of a "phone case".
 
@@ -68,10 +67,11 @@ carry around in the form factor of a "phone case".
     Phase 2 should also attempt to implement any physical mitigations
     required by the threat model for release hardware.
 
-3. **Release** Consumer-ready system. Priced in the $100-$150 range in
-100k quantities, sub-$100 in 500k quantities. This system takes the
-learnings from the first two phases and incorporates them into a truly
-"user-ready" experience.
+3. **Release** Consumer-ready system. Pricing will depend on demand.
+Production in 100k quantities should drive a shelf price in the
+$100-$150 range, with a potential for sub-$100 in 500k or higher
+quantities. This system takes the learnings from the first two phases
+and incorporates them into a truly "user-ready" experience.
 
 ### Threat model for release hardware
 

@@ -1,4 +1,4 @@
-betrusted is a security enclave with human-friendly I/O. 
+Betrusted is a security enclave with human-friendly I/O. 
 
 ## The Birds, the Bees, and the Private Keys
 
@@ -17,15 +17,19 @@ safe.
 Today's enclaves protect only certain cryptographic secrets, such as
 private keys. These enclaves lack human-friendly I/O and must delegate
 the task of rendering and recording information to a less secure
-host. As a result, remotely-controlled keyboard loggers and screen
-scrapers can still access your data as it transits between the
-enclave and you.
+host. 
 
-Protecting private keys is not the same thing as protecting your
-naughty bits. betrusted adds Human-Computer Interaction (HCI)
-elements to an enclave, ensuring that human-readable secrets are never
-stored, displayed, or transmitted beyond the confines of the betrusted
-device: betrusted is an enclave with human-friendly I/O.
+This leads to an important nuance: protecting private keys is not the
+same thing as protecting your private bits. A remotely-controllled
+keyboard logger can still record your passwords as you type them; a
+screen grabber can still read your messages, photos, and authenticator
+tokens as easily as you can.
+
+Betrusted solves this problem by incorporating easily auditable
+Human-Computer Interaction (HCI) elements to the security enclave, ensuring
+that human-readable secrets are never stored, displayed, or
+transmitted beyond the confines of the betrusted device: betrusted is
+a security enclave with human-friendly I/O.
 
 ## HCI-driven security model
 
@@ -33,15 +37,14 @@ device: betrusted is an enclave with human-friendly I/O.
 stands for Human-Computer Interaction. It's about making computers
 usable to every day people.
 
-People use a wide range of languages, and some are illiterate. Thus a
-key challenge for betrusted is striking a balance between best
-security practices and a native-language HCI: more features means more
-attack surfaces, while too few features renders the device too
-difficult to use.
+People use a wide range of languages. Thus a key challenge for
+betrusted is striking a balance between best security practices and a
+native-language HCI: more features means more attack surfaces, while
+too few features renders the device too difficult to use.
 
-Therefore, correctly scoping the HCI aspect is critical. betrusted's
+Therefore, correctly scoping the HCI aspect is critical. Betrusted's
 HCI scope includes native-language text messaging support, as well as
-voice messaging for illiterate users.
+voice messaging.
 
 * The [HCI rationale](/hci-rationale/) page explores the core HCI
 requirements.
@@ -50,9 +53,18 @@ how HCI and security requirements come together into a single device.
 
 ## Building betrusted
 
-Best security practice requires betrusted's full technology stack,
-including silicon, device, OS, and UX, to be open for inspection and
-verification by anyone.
+Trust starts with transparency. Food is labelled with their
+ingredients, and subject to routine tests for pathogens. This keeps us
+safe from foodborne illnesses. As long as technology remains a
+black box, we should not be surprised that bad actors can hide
+viruses in our devices. 
+
+Betrusted aims to build a full technology stack, including silicon,
+device, OS, and UX, that is open for inspection and verification by
+anyone: experts, governments, and users are free to audit, critique,
+confirm and improve its ability to keep secrets. You, the user, gets
+to pick which version or provider for betrusted you trust the
+most. Thus, the only secrets in betrusted are the ones you put in it.
 
 The depth of this tech stack represents a significant engineering
 effort, spanning multiple disciplines across the techology
@@ -64,7 +76,35 @@ alpha; an early-adopter beta; and finally, a consumer-ready product.
 
 Learn more about the [betrusted development plan](/dev-plan/).
 
-### Developer-Only Alpha
+## Betrusted device concept
+
+**Betrusted is not a phone**: it is a secure enclave with auditable input
+and output surfaces. Betrusted relies on sharing your existing
+connectivity -- such as your phone or cable modem -- to access the
+Internet. The first generation of betrusted will incorporate a WiFi
+interface. Read more about how [betrusted handles
+networking](/betrusted-architecture/#network-interface) to understand
+how your betrusted can be extended to handle your favorite network
+interface.
+
+As a secondary device, betrusted aims to occupy a minimal footprint.
+The typical usage scenario integrates betrusted into the protective
+case of your existing mobile phone. This usage scenario requires
+betrusted to be physically as thin as practical. This "thin as
+practical" criteria influences virtually all of the design decisions
+around the device hardware.
+
+betrusted is also designed with a special low-power consumption
+"memory LCD" screen that can display information all day without
+draining its battery. This always-on feature allows betrusted to serve
+as a kind of notepad for your life's private details. For example,
+saving bitmap images of your airplane boarding passes on betrusted
+allows you to board an airplane without having to turn on your phone.
+
+Below are some concept renderings to give an idea of what the
+betrusted device might eventually look like.
+
+### Developer-Only Alpha Hardware
 
 The alpha hardware is implemented using a FPGA containing a RISC-V
 soft core. The primary goal of this phase is to solidify the specs of
@@ -74,28 +114,31 @@ looks-ilke, works-like prototype.
 ![](assets/images/betrusted-concept-1.jpg)
 
 Above is a concept rendering of what the alpha hardware might look
-like. Measuring at 5.5mm thick, the enclave houses an oversized
-battery to complement the high leakage power of the FPGA. A superset
-of proposed features are represented in this prototype to facilitate
-HCI experimentation.
+like. The enclave is thicker than the production units, as it houses
+an oversized battery to complement the high leakage power of the
+FPGA. A superset of proposed features are represented in this
+prototype to facilitate HCI experimentation.
 
 Read more about the [alpha hardware FPGA](/betrusted-architecture/#developer-fpga-system).
 
-### Early-Adopter Beta
+### Early-Adopter Beta Hardware
 
-The second phase translates the FPGA design into a proper ASIC
-enclave. This brings about orders of magnitude in power saving and
-improved performance, allowing the hardware to be sleeker while
-supporting a longer battery life. This phase aims to harden the
+Betrusted's second phase translates the FPGA design into an ASIC
+enclave. In addition to providing physical tamper resistance, the ASIC
+will consume much less power while running at higher speeds, enabling
+the device hardware to be sleeker. This phase aims to harden the
 codebase, while validating [novel technological
 concepts](https://github.com/betrusted-io/betrusted-wiki/wiki/ASIC-hardening)
-built into the ASIC meant to harden against supply chain attacks.
+built into the ASIC meant to harden against supply chain attacks while
+enhancing transparency despite the extremely closed nature of the silicon
+foundry business.
 
 ![](assets/images/betrusted-concept-2.jpg)
 
-In this concept, betrusted measures in at about 3.5mm thick. Achieving
-such a thin form factor will require developing a novel keyboard
-element and incorporating features such as inductive charging.
+This concept shoots for a thin-as-practical design so that betrusted
+can properly fill the role of a phone companion. Such a thin form
+factor will require developing a novel keyboard element and
+incorporating features such as inductive charging.
 
 Read more about the [beta hardware custom SoC](/betrusted-architecture/#custom-soc).
 
