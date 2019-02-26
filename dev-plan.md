@@ -20,7 +20,7 @@ the flow of information between the users and their private keys.
 
 ## Plan
 
-The final vision of betrusted is a much larger project that can be
+The final vision of betrusted is a much larger project than can be
 accomplished in a single product generation. To meet the physical
 tamper resistance goals, the enclave SoC should be full custom
 silicon. However, spinning full custom silicon without comprehensive
