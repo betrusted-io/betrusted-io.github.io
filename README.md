@@ -1,4 +1,4 @@
-Betrusted is a secure enclave with a dedicated display and
+Betrusted is a cryptoprocessor with a dedicated display and
 keyboard. It's a protected place for your private matters.
 
 <video width="800" controls autoplay><source src="https://raw.githubusercontent.com/betrusted-io/betrusted-io.github.io/master/assets/media/betrusted_intro_450p.mp4" type="video/mp4"></video>
