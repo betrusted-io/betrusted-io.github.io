@@ -29,7 +29,7 @@ silicon. This companion processor is responsible for decapsulating
 betrusted packets and dealing with stateful events such as
 out-of-order arrivals or packet loss events.
 
-Thus the sole interface exposed to the network is elecrtically an SDIO
+Thus the sole interface exposed to the network is electrically an SDIO
 port (which also supports SPI mode). betrusted is always the master of
 the network port, although the network device can raise an interrupt
 for attention. The packet format itself is TBD but it will feature
@@ -75,7 +75,7 @@ ROM is available to validate the code on the ROM.
 As a result, the initial target for the custom ASIC is a 40nm process.
 Please see [ASIC hardening](https://github.com/betrusted-io/betrusted-wiki/wiki/ASIC-hardening)
 for a discussion of how we plan to mitigate the issues of fab transparency
-and post-tapeout inspection engerdered by going with such a process.
+and post-tapeout inspection engendered by going with such a process.
 
 ## Developer FPGA System
 
