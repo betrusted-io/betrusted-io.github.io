@@ -41,6 +41,9 @@ also means it is easier to create variants of betrusted with your
 favorite network interface, be it WiFi, Bluetooth, 3G, 4G, 5G,
 Ethernet, carrier pigeon...
 
+The initial target for the alpha-unit network interface is wifi,
+implemented using SiLabs WF200C. 
+
 ## Display and Keyboard
 
 Please see the [HCI rationale](/hci-rationale/) for a discussion of
