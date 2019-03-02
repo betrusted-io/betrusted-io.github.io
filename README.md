@@ -175,7 +175,7 @@ in as more technical details come online.
 
 ## Morsels you may be interested in
 
-* [Avalanche Noise Source](/avalanche-noise/) design notes
+* [Avalanche Noise Source](/avalanche-noise) design notes
 
 ## Who is behind betrusted?
 
