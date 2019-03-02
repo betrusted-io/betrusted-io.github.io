@@ -173,6 +173,10 @@ technical information. The main [betrusted github
 repository](https://github.com/betrusted-io) will also begin to fill
 in as more technical details come online.
 
+## Morsels you may be interested in
+
+* [Avalanche Noise Source](/avalanche-noise/) design notes
+
 ## Who is behind betrusted?
 
 The betrusted-io github repository's people page [lists the
