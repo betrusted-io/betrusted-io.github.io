@@ -226,23 +226,40 @@ range.
 Several devices were evaluated for their noise performance
 using the circuit as designed: 
 
-![device matrix](assets/images/avalanche_devices.png)
+|Part number	|Mfg	        |Vbr   |noise mVpp |Type |
+|---------------|---------------|------|-----------|-----|
+|MMBT2222A-7-F	|Diodes Inc	|7.52  |69.6	   |NPN  |
+|MMBT3904LT1G	|On semi	|7.8   |80.4	   |NPN  |
+|MMBT2484	|On semi	|10.65 |571	   |NPN  |
+|BSV52LT1G	|On semi	|7.39  |74.5	   |NPN  |
+|MMBT100	|On semi	|8.43  |157	   |NPN  |
+|MMBT2222A	|On semi	|8.69  |107	   |NPN  |
+|MMBT3904-TP	|Microcom	|8.66  |115	   |NPN  |
+|MMSZ15T1G	|On semi	|15.34 |379	   |zener|
+|DDZ9V1C-7	|Diodes Inc	|9.31  |89	   |zener|
+|MMSZ525BT1G	|On semi	|24.3  |951	   |zener|
+
+Vbr is the measured breakdown voltage at a 3.16uA bias
+current and roughly 3V of compliance provided by the
+ballast resistor above the diode.
 
 ![devices tested](assets/images/devices_tested.jpg)
 
 Note that the measurement limit for noise is around 70mVp-p, so some
-NPN transistors were possibly generating no noise.  In general, it was
-observed that devices with higher breakdown voltages would generate
-more noise. We settled on a 15V zener diode (MMSZ15T1G) as the initial
-device for noise generation. This device is squarely in the middle of
-the range of the TPS61158 regulator, is comfortably above the zener
-threshold, yet not excessively high (as a higher voltage would lead to
-higher power dissipation), and is guaranteed by the manufacturer to
-breakdown at a certain voltage. Although more noise was witnessed on a
-24V breakdown device, operation near the cutoff threshold of the
-TPS61158 made the circuit unreliable under some startup
-conditions. Any lack in amplitude could be restored anyways by the
-follow-up signal conditioning circuitry.
+NPN transistors were possibly generating little to no noise.  In
+general, it was observed that devices with higher breakdown voltages
+would generate more noise.
+
+We settled on a 15V zener diode (MMSZ15T1G) as the initial device for
+noise generation. This device is squarely in the middle of the range
+of the TPS61158 regulator, is comfortably above the zener threshold,
+yet not excessively high (as a higher voltage would lead to higher
+power dissipation), and is guaranteed by the manufacturer to breakdown
+at a certain voltage. Although more noise was witnessed on a 24V
+breakdown device, operation near the cutoff threshold of the TPS61158
+made the circuit unreliable under some startup conditions. Any lack in
+amplitude could be restored anyways by the follow-up signal
+conditioning circuitry.
 
 ![initial noise trace](assets/images/tek00035.png)
 
@@ -275,16 +292,31 @@ The optimized circuit has the following characteristics:
 * successfully boots at 2.8V and 4.4V
 * generates noise at 0C and 80C. At 0C the noise is about 50% larger in amplitude, at 80C it's about 50% smaller in amplitude.
 
+Notes: 
+* The voltage on the regulation capacitor has a
+non-trivial amount of ripple. This probably applies a signature on the
+noise generated.
+* The TPS61158 draws about 1uA through the feedback
+pin, which means of the target 4.2uA bias current, 1 uA is shunted into
+the feedback pin (resulting in 3.2uA going into the diode).
+
+# Next Iteration
+
 The overall footprint is around 1 cm^2, and can be optimized further
 by going to a smaller inductor. The inductor initially chosen for the
 test circuit is greatly oversized for the application (just in case
 higher current were needed for testing). A much smaller inductor,
 perhaps an 0603 or 0805 part, could be used thus reducing the
-footprint even further.
+footprint even further. For example, a TDK MLZ1608M220WT000 is in an
+0603 package and saturates at 55mA. This should be sufficient given
+the operating current of 3uA, although there is some question about
+the inductor's performance during power-on.
 
-It's also noted that the voltage on the regulation capacitor has a
-non-trivial amount of ripple. This probably applies a signature on the
-noise generated, but not a large enough signature to be of concern.
-It's also noted that the TPS61158 draws about 1uA through the feedback
-pin, which means of the target 4.2uA bias current, a significant
-fraction is flowing into the feedback pin.
+A smaller footprint for the noise generating diode could be used as well.
+The initial layout used a SOT-23 footprint to accommodate a wide variety of
+devices but the final circuit could use a SOD-523. The following devices
+are candidates to be tested:
+
+* BZT585B15T, BZT585B18T - zener diode, intended for voltage reference purposes
+* PESD12VS1UB, PESD15VS1UB - TVS diode, intended for circuit protection
+
