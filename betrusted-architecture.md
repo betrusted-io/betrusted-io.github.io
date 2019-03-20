@@ -124,7 +124,7 @@ go: low power, or high performance.
 
 2. **High Performance** The advantage of the high performance route is
 we get a better firmware exemplar of the final device. In other words,
-the algorithms and memory size more closely matches what would be
+the architecture and memory size more closely matches what would be
 expected from the full-custom SoC version of the chip. Initial
 estimates show a Spartan7 implementation of a RISC-V CPU with 4kiB
 I-cache and D-cache, single-cycle multiplier, and about 128kiB of fast
@@ -136,7 +136,7 @@ clock-throttle to run around 10MHz at a power of around 90mW (of which
     double-ratchet to yield a per-message throughput rate of about one
     every 60-100ms or so. This is a much more user-tolerable time for
     messaging. Furthermore, the CPU has sufficient performance to
-    implement test feature such as voice calling that could be very
+    implement test features such as voice calling that could be very
     compelling to end users. The downside is that the two orders
     magnitude increase in static power translates to a standby time of
     weeks shrinking to about a day, while requiring a battery on the

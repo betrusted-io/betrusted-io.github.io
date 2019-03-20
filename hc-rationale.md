@@ -72,7 +72,7 @@ A secondary reason for a physical keyboard is simplicity of supply
 chain logistics. High quality captouch surfaces are largely
 proprietary parts with few sources. This makes the parts difficult
 for independent builders to obtain, and also greatly increases the
-difficulty of build a customized derivative of betrusted.
+difficulty of building customized derivatives of betrusted.
 
 ## Black and white memory LCD
 
@@ -119,7 +119,7 @@ the EPD supply chain is even more proprietary than most LCDs.
   features high-contrast IPS technology, and is a good balance between
   openness and user experience. As of writing, a comprehensive
   controller IC spec
-  ([ILI9488](https://focuslcds.com/content/ILI9488.pdf) is available
+  ([ILI9488](https://focuslcds.com/content/ILI9488.pdf)) is available
   for download. However, the power consumption is quite high, and the
   additional processing burden of handling this display's resolution
   may be beyond the capability of the enclave.
