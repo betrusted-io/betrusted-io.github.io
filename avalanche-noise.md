@@ -179,6 +179,7 @@ cause problems with circuit startup, so this needs to be characterized
 carefully.
 
 ![avalache circuit diagram](assets/images/avalanche_circuit.png)
+[source repo](https://github.com/betrusted-io/betrusted-hardware-xt.git)
 
 The cathode of the noise generator is AC-coupled to a resistive
 divider that centers the noise within the sweet spot of an amplifier
