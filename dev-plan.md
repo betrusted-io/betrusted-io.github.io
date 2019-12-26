@@ -21,10 +21,11 @@ the flow of information between the users and their private keys.
 ## Plan
 
 The final vision of betrusted is a much larger project than can be
-accomplished in a single product generation. To meet the physical
-tamper resistance goals, the enclave SoC should be full custom
-silicon. However, spinning full custom silicon without comprehensive
-application-level and user-level validation is extremely risky.
+accomplished in a single product generation. In an ideal world, the
+project would encompass technologies that facilitate end-user
+verification of custom silicon. However, this vision might be a
+few years out; until then, our strategy is develop a system that
+operates inside an FPGA that can be self-sealed via on-chip eFuses.
 
 Thus the general strategy is to take a three-step approach to system development:
 
@@ -40,9 +41,11 @@ quantities.
     successful crowdfunding campaign and adequate developer interest in
     the OS and UX aspects.
 
-    Phase 1 prototypes are explicitly _not_ evil-maid attack
-    resistant, but should offer hermetic remote-exploit resistance at
-    the software level even against APTs.
+    Phase 1 prototypes will be able to provide some measure of
+    physical tamper resistance, to the level that the off-the-shelf
+    FPGAs used are resistant to efforts to read out their security
+    keys. The software should offer hermetic remote-exploit resistance
+    at the software level even against APTs.
 
     Phase 1 will iterate until the user experience is _just right_
     before moving to phase 2, because there is no second chance at
@@ -50,9 +53,9 @@ quantities.
     SoC.
 
 2. **Beta** Custom SoC-based system for early adopters. Priced in the
-$200-300 range, produced in sub-10k quantities. Resistant to "evil maid"
-attacks, extremely good battery life, thin form factor that is easy to
-carry around in the form factor of a "phone case".
+$200-300 range, produced in sub-10k quantities. Tamper resistant,
+usable battery life, thin form factor that is easy to carry around in
+the form factor of a "phone case".
 
     Phase 2 validates HCI assumptions and physical form factor
     assumptions derived in phase 1 across a larger user base. As a
@@ -69,7 +72,7 @@ carry around in the form factor of a "phone case".
 
 3. **Release** Consumer-ready system. Pricing will depend on demand.
 Production in 100k quantities should drive a shelf price in the
-$100-$150 range, with a potential for sub-$100 in 500k or higher
+$120-$180 range, with a potential for sub-$120 in 500k or higher
 quantities. This system takes the learnings from the first two phases
 and incorporates them into a truly "user-ready" experience.
 
