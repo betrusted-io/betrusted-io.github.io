@@ -1,5 +1,8 @@
-Betrusted is a cryptoprocessor with a dedicated display and
-keyboard. It's a protected place for your private matters.
+Betrusted is a protected place for your private matters. It's built
+from the ground up to be checked by anyone, but sealed only by you.
+Betrusted is more than just a secure CPU -- it is a system complete
+with screen and keyboard, because privacy begins and ends with the
+user.
 
 <video width="100%" controls autoplay muted><source src="https://raw.githubusercontent.com/betrusted-io/betrusted-io.github.io/master/assets/media/betrusted_intro_450p.mp4" type="video/mp4"></video>
 [1080p version](https://bunniefoo.com/betrusted/media/betrusted_intro_1080p.mp4)
@@ -66,16 +69,16 @@ actors can hide viruses in our devices.
 Betrusted aims to build a full technology stack, including silicon,
 device, OS, and UX, that is open for inspection and verification by
 anyone: experts, governments, and users are free to audit, critique,
-confirm and improve its ability to keep secrets. You, the user, get
-to pick which version or provider for betrusted you trust the
-most. Thus, the only secrets in betrusted are the ones you put in it.
+confirm and improve its ability to keep secrets. You, the user, get to
+pick which version or provider for betrusted you trust the most. Thus,
+the only secrets in betrusted are the ones you choose to seal in it.
 
 The depth of this tech stack represents a significant engineering
 effort, spanning multiple disciplines across the techology
 spectrum. We welcome the contributions of all free/libre software developers:
 please visit [our github repo](https://github.com/betrusted-io/).
 
-The project is currently at the feasability and planning stage. The
+The project is currently at the early hardware prototype stage. The
 current plan divides the project into three phases: a developer-only
 alpha; an early-adopter beta; and finally, a consumer-ready product.
 
@@ -112,58 +115,23 @@ as a kind of notepad for your life's private details. For example,
 saving bitmap images of your airplane boarding passes on betrusted
 allows you to board an airplane without having to turn on your phone.
 
-Below are some concept renderings to give an idea of what the
-betrusted device might eventually look like.
+Below are some concepts to give an idea of what the betrusted device
+might eventually look like.
 
-### Developer-Only Alpha Hardware
+### First-Generation Alpha Hardware
 
 The alpha hardware is implemented using a FPGA containing a RISC-V
 soft core. The primary goal of this phase is to solidify the specs of
-the eventual betrusted ASIC through development and testing on a
+the eventual betrusted system through development and testing on a
 looks-like, works-like prototype.
 
-![](assets/images/betrusted-concept-1.jpg)
+![](assets/images/betrusted-quarter2.jpg)
 
-Above is a concept rendering of what the alpha hardware might look
-like. The enclave is thicker than the production units, as it houses
-an oversized battery to complement the high leakage power of the
-FPGA. A superset of proposed features are represented in this
-prototype to facilitate HCI experimentation.
+Above is a photo of an early alpha hardware unit. A superset of
+proposed features are represented in this prototype to facilitate HCI
+experimentation.
 
 Read more about the [alpha hardware FPGA](/betrusted-architecture/#developer-fpga-system).
-
-### Early-Adopter Beta Hardware
-
-Betrusted's second phase translates the FPGA design into an ASIC
-enclave. In addition to providing physical tamper resistance, the ASIC
-will consume much less power while running at higher speeds, enabling
-the device hardware to be sleeker. This phase aims to harden the
-codebase, while validating [novel technological
-concepts](https://github.com/betrusted-io/betrusted-wiki/wiki/ASIC-hardening)
-built into the ASIC meant to harden against supply chain attacks while
-enhancing transparency despite the extremely closed nature of the silicon
-foundry business.
-
-![](assets/images/betrusted-concept-2.jpg)
-
-This concept shoots for a thin-as-practical design so that betrusted
-can properly fill the role of a phone companion. Such a thin form
-factor will require developing a novel keyboard element and
-incorporating features such as inductive charging.
-
-Read more about the [beta hardware custom SoC](/betrusted-architecture/#custom-soc).
-
-### Consumer-Ready Product
-
-The final phase is a "consumer-ready product". As the name implies,
-the product will be ready to use out of the box, with special effort
-put into the out of box user experience and documentation such that
-anyone can set up and use betrusted to communicate, transact, and
-safeguard secret data.
-
-This phase will incorporate a substantial amount of learning from the
-first two phases. There is no placeholder concept rendering, as the
-final design will be born of the unknown unknowns.
 
 # More Info
 
@@ -187,4 +155,8 @@ publicly](https://help.github.com/en/articles/publicizing-or-hiding-organization
 The administrative contact for the betrusted.io project is [Andrew
 'bunnie' Huang](https://en.wikipedia.org/wiki/Andrew_Huang_(hacker))
 ([@bunniestudios](https://twitter.com/bunniestudios)/[blog](https://bunniestudios.com)).
+
+The Betrusted team is funded in part by the [NLnet
+Foundation](https://nlnet.nl/PET/) via Privacy & Trust Enhancing Technologies
+grants.
 
