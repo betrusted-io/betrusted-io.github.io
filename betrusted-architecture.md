@@ -9,7 +9,7 @@ permalink: /betrusted-architecture/
 betrusted.io aims to create a hardware system that features a secure
 enclave tied directly to hardware input and output mechanisms that
 eliminate, as much as possible, the possibility of a MITM between the
-user and the secrets within the enclave. 
+user and the secrets within the enclave.
 
 As a result, the system architecture prefers simple, minimalistic
 input and output motifs that are easier to verify and more difficult
@@ -42,7 +42,7 @@ favorite network interface, be it WiFi, Bluetooth, 3G, 4G, 5G,
 Ethernet, carrier pigeon...
 
 The initial target for the alpha-unit network interface is wifi,
-implemented using SiLabs WF200C. 
+implemented using SiLabs WF200C.
 
 ## Display and Keyboard
 
@@ -170,3 +170,11 @@ dev system to be resistant or tolerant to an evil-maid style attack,
 so splitting the power and computational responsibilities across two
 cryptographically unlinked (but still trusted) CPUs should not
 compromise the primary mission of the developer-oriented FPGA system.
+
+#### Navigation
+
+* [Betrusted](/)
+  * [HCI Rationale](/hci-rationale)
+  * **Betrusted Architecture**
+  * [Development Plan](/dev-plan/)
+  * [Avalanche Noise Source Design](/avalanche-noise/)

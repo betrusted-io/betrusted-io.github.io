@@ -15,7 +15,7 @@ attacks](https://sharps.org/wp-content/uploads/BECKER-CHES.pdf).
 In addition to an on-die RNG, betrusted's entropy pool in reinforced
 by an externally testable noise source. Avalanche noise sources fit
 the bill, as they can delivery reasonably high quality entropy and
-verification can be done using a low-end "economy" oscilloscope. 
+verification can be done using a low-end "economy" oscilloscope.
 
 The challenges of avalanche noise sources include the need for high
 (10-30V) voltages (and correspondingly high power consumption), and
@@ -82,7 +82,7 @@ They hybrid engineering of the zener diodes has lead to some confusion
 when selecting suitable parts as an avalanche noise source. However,
 zener diodes above 7V or so start to rely more and more on avalanche
 breakdown, so one may more accurately call a high voltage zener diode
-an avalanche breakdown diode. 
+an avalanche breakdown diode.
 
 Note that avalanche diodes to be used as voltage references are
 engineered to be less suitable as a noise source. Obviously, if the
@@ -107,7 +107,7 @@ with increased noise generation:
 A variety of inexpensive zener regulators as well as ESD protection
 diodes meet this criteria. ESD protection diodes in particular care
 little about how much avalanche noise is generated, and may prioritize
-lower leakage in reverse bias instead. 
+lower leakage in reverse bias instead.
 
 ### NPN transitor junctions
 
@@ -135,7 +135,7 @@ their reverse B-E breakdown, the quality of the noise generated can
 vary widely between manufacturers and models. The Internet also
 contains anecdotes that over time the B-E junction "wears out" over
 a period months and the quality of noise degrades, but there is no
-discussion of mechanism or backup with measurements. 
+discussion of mechanism or backup with measurements.
 
 # Circuit Design
 
@@ -196,7 +196,7 @@ range.
 # Circuit Characterization
 
 Several devices were evaluated for their noise performance
-using the circuit as designed: 
+using the circuit as designed:
 
 |Part number	|Mfg	        |Vbr   |noise mVpp |Type |
 |---------------|---------------|------|-----------|-----|
@@ -264,7 +264,7 @@ The optimized circuit has the following characteristics:
 * successfully boots at 2.8V and 4.4V
 * generates noise at 0C and 80C. At 0C the noise is about 50% larger in amplitude, at 80C it's about 50% smaller in amplitude.
 
-Notes: 
+Notes:
 * The voltage on the regulation capacitor has a
 non-trivial amount of ripple. This probably applies a signature on the
 noise generated.
@@ -292,3 +292,10 @@ are candidates to be tested:
 * BZT585B15T, BZT585B18T - zener diode, intended for voltage reference purposes
 * PESD12VS1UB, PESD15VS1UB - TVS diode, intended for circuit protection
 
+#### Navigation
+
+* [Betrusted](/)
+  * [HCI Rationale](/hci-rationale)
+  * [Betrusted Architecture](/betrusted-architecture/)
+  * [Development Plan](/dev-plan/)
+  * **Avalanche Noise Source Design**

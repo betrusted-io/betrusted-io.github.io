@@ -123,7 +123,7 @@ the EPD supply chain is even more proprietary than most LCDs.
   for download. However, the power consumption is quite high, and the
   additional processing burden of handling this display's resolution
   may be beyond the capability of the enclave.
-  
+
 The final solution picked for the initial betrusted display is the
 [Sharp Black and White Memory LCD part number
 LS032B7DD02](https://www.sharpsma.com/products?sharpCategory=Memory%20LCD&p_p_parallel=0#).
@@ -152,3 +152,10 @@ commodity inside a cryptographic enclave.
 * How to implement a secure chat? In other words, how do we get Signal to fit inside a secure enclave?
 * How to implement a peer to peer secure voice call and/or audio snippets in chat?
 
+#### Navigation
+
+* [Betrusted](/)
+  * **HCI Rationale**
+  * [Betrusted Architecture](/betrusted-architecture/)
+  * [Development Plan](/dev-plan/)
+  * [Avalanche Noise Source Design](/avalanche-noise/)

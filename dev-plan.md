@@ -32,7 +32,7 @@ Thus the general strategy is to take a three-step approach to system development
 1. **Alpha** Developer-oriented FPGA-based system. "Almost looks-like,
 works-like" prototypes in the form factor of a phone case. Priced in
 the few hundred dollar range, produced in small (100's)
-quantities. 
+quantities.
 
     Primary focus is on vetting the code base and validating the ASIC
     design parameters.  Concurrent variations testing several keyboard
@@ -105,3 +105,11 @@ fab). Instead, the RTL shall be hardened against potential "hard-IP"
 exploits with hardware ASLR. See [ASIC
 hardening](https://github.com/betrusted-io/betrusted-wiki/wiki/ASIC-hardening)
 for more details.
+
+#### Navigation
+
+* [Betrusted](/)
+  * [HCI Rationale](/hci-rationale)
+  * [Betrusted Architecture](/betrusted-architecture/)
+  * **Development Plan**
+  * [Avalanche Noise Source Design](/avalanche-noise/)
