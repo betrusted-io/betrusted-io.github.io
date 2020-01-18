@@ -171,10 +171,10 @@ so splitting the power and computational responsibilities across two
 cryptographically unlinked (but still trusted) CPUs should not
 compromise the primary mission of the developer-oriented FPGA system.
 
-#### Navigation
+### Navigation
 
 * [Betrusted](/)
   * [HCI Rationale](/hci-rationale)
   * **Betrusted Architecture**
-  * [Development Plan](/dev-plan/)
-  * [Avalanche Noise Source Design](/avalanche-noise/)
+  * [Development Plan](/dev-plan)
+  * [Avalanche Noise Source Design](/avalanche-noise)

@@ -292,10 +292,10 @@ are candidates to be tested:
 * BZT585B15T, BZT585B18T - zener diode, intended for voltage reference purposes
 * PESD12VS1UB, PESD15VS1UB - TVS diode, intended for circuit protection
 
-#### Navigation
+### Navigation
 
 * [Betrusted](/)
   * [HCI Rationale](/hci-rationale)
-  * [Betrusted Architecture](/betrusted-architecture/)
-  * [Development Plan](/dev-plan/)
+  * [Betrusted Architecture](/betrusted-architecture)
+  * [Development Plan](/dev-plan)
   * **Avalanche Noise Source Design**

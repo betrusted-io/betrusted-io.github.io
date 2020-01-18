@@ -160,10 +160,10 @@ The Betrusted team is funded in part by the [NLnet
 Foundation](https://nlnet.nl/PET/) via Privacy & Trust Enhancing Technologies
 grants.
 
-#### Navigation
+### Navigation
 
 * **Betrusted**
-  * [HCI Rationale](/hci-rationale/)
-  * [Betrusted Architecture](/betrusted-architecture/)
-  * [Development Plan](/dev-plan/)
-  * [Avalanche Noise Source Design](/avalanche-noise/)
+  * [HCI Rationale](/hci-rationale)
+  * [Betrusted Architecture](/betrusted-architecture)
+  * [Development Plan](/dev-plan)
+  * [Avalanche Noise Source Design](/avalanche-noise)

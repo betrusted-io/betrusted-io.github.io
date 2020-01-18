@@ -152,10 +152,10 @@ commodity inside a cryptographic enclave.
 * How to implement a secure chat? In other words, how do we get Signal to fit inside a secure enclave?
 * How to implement a peer to peer secure voice call and/or audio snippets in chat?
 
-#### Navigation
+### Navigation
 
 * [Betrusted](/)
   * **HCI Rationale**
-  * [Betrusted Architecture](/betrusted-architecture/)
-  * [Development Plan](/dev-plan/)
-  * [Avalanche Noise Source Design](/avalanche-noise/)
+  * [Betrusted Architecture](/betrusted-architecture)
+  * [Development Plan](/dev-plan)
+  * [Avalanche Noise Source Design](/avalanche-noise)

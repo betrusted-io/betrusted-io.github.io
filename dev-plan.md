@@ -106,10 +106,10 @@ exploits with hardware ASLR. See [ASIC
 hardening](https://github.com/betrusted-io/betrusted-wiki/wiki/ASIC-hardening)
 for more details.
 
-#### Navigation
+### Navigation
 
 * [Betrusted](/)
   * [HCI Rationale](/hci-rationale)
-  * [Betrusted Architecture](/betrusted-architecture/)
+  * [Betrusted Architecture](/betrusted-architecture)
   * **Development Plan**
-  * [Avalanche Noise Source Design](/avalanche-noise/)
+  * [Avalanche Noise Source Design](/avalanche-noise)
