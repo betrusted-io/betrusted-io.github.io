@@ -156,9 +156,12 @@ The administrative contact for the betrusted.io project is [Andrew
 'bunnie' Huang](https://en.wikipedia.org/wiki/Andrew_Huang_(hacker))
 ([@bunniestudios](https://twitter.com/bunniestudios)/[blog](https://bunniestudios.com)).
 
-The Betrusted team is funded in part by the [NLnet
-Foundation](https://nlnet.nl/PET/) via Privacy & Trust Enhancing Technologies
-grants.
+The Betrusted team is funded in part through the [NGI0 PET
+Fund](https://nlnet.nl/PET), a fund established by NLnet with
+financial support from the European Commission's [Next Generation
+Internet](https://ngi.eu/) programme, under the aegis of DG
+Communications Networks, Content and Technology under grant agreement
+No 825310.
 
 ### Navigation
 
