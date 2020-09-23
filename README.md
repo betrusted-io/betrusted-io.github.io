@@ -1,137 +1,201 @@
-Betrusted is a protected place for your private matters. It's built
-from the ground up to be checked by anyone, but sealed only by you.
-Betrusted is more than just a secure CPU -- it is a system complete
-with screen and keyboard, because privacy begins and ends with the
-user.
+Betrusted is a secure and private communications system. It gives
+users an evidence-based reason to believe that private matters are
+kept private.
+
+Betrusted is more than just an app, and more than just a gadget -- it
+is a co-designed hardware + software solution that provides safe
+defaults for everyday users. It's also open source, empowering
+advanced users to analyze, extend and explore this secure mobile
+computer.
+
 
 <video width="100%" controls autoplay muted><source src="https://raw.githubusercontent.com/betrusted-io/betrusted-io.github.io/master/assets/media/betrusted_intro_450p.mp4" type="video/mp4"></video>
 [1080p version](https://bunniefoo.com/betrusted/media/betrusted_intro_1080p.mp4)
 
-## The Birds, the Bees, and the Private Keys
+# Our Core Principles
 
-A hacked phone or laptop means all of your passwords, private keys,
-authenticator tokens and other secrets are potentially compromised. To
-guard against this, systems are starting to incorporate physically
-distinct
-"[enclaves](https://developer.apple.com/documentation/security/certificate_key_and_trust_services/keys/storing_keys_in_the_secure_enclave)"
-(aka [secure
-elements](https://www.ledger.fr/2018/12/03/a-closer-look-into-ledger-security-the-secure-element/)
-or [TPMs](https://en.wikipedia.org/wiki/Trusted_Platform_Module)). An
-enclave is like having a safe in your house: even if the lock on the
-front door is broken, the thief still can't access the contents of the
-safe.
+Betrusted is designed around the principles of transparency,
+simplicity, completeness, and self-sealing.
 
-Today's enclaves protect only certain cryptographic secrets, such as
-private keys. These enclaves lack human-friendly I/O and must delegate
-the task of rendering and recording information to a less secure
-host.
+### Transparency
 
-This leads to an important nuance: protecting private keys is not the
-same thing as protecting your private bits. A remotely-controlled
-keyboard logger can still record your passwords as you type them; a
-screen grabber can still read your messages, photos, and authenticator
-tokens as easily as you can.
+Transparency is the bedrock of trust. Understanding what makes a thing
+tick gives us an evidence-based reason to trust that it works as
+intended. Betrusted is unique in that, instead of a black-box CPU
+chip, it uses reconfigurable hardware – an FPGA – for
+computation. This means you can compile our reference processor design
+from source, instead of simply having to accept on faith that this
+black epoxy rectangle contains precisely the circuits it
+advertises. Furthermore, we are at liberty to introduce
+countermeasures against known and future threats in the silicon supply
+chain by re-designing and re-compiling our processors.
 
-Betrusted solves this problem by incorporating easily auditable
-Human-Computer Interaction (HCI) elements to the security enclave.
-Betrusted ensures that human-readable secrets are never stored,
-displayed, or transmitted beyond the confines of the betrusted device:
-betrusted is a security enclave with human-friendly I/O.
+### Simplicity
 
-## HCI-driven security model
+Simplicity addresses the reality of only having 24 hours in a
+day. Even though the full source code for the Linux kernel and Firefox
+is published, nobody has the time to personally review every release
+for potential security problems; we simply trust that others have done
+a good job, because we have no other choice. Betrusted rolls the clock
+back to the early 2000’s, when mobile computers were powerful enough
+to be useful for single tasks, while simple enough that individuals or
+small teams could build them from scratch. But don't worry, despite
+its simplicity, Betrusted’s computational capability exceeds that of
+the Palm Pilot series. It's more on par with a Nintendo DS: sufficient
+for core security tasks such as authentication, instant messaging,
+and even end-to-end encrypted voice calls.
 
-[HCI](https://en.wikipedia.org/wiki/Human%E2%80%93computer_interaction)
-stands for Human-Computer Interaction. It's about making computers
-usable.
+### Completeness
 
-Adding human I/O to an enclave means tackling the diversity of human
-language without compromising security. Thus a key challenge for
-betrusted is striking a balance between best security practices and a
-native-language HCI: more features means more attack surfaces, while
-too few features renders the device too difficult to use.
+Trust should begin at your fingertips and end at your eyes. Screen
+grabbers and keyboard loggers mean that chip-only trust solutions,
+such as TPMs, SGX, and secure enclaves are insufficient; we need a
+complete, end-to-end solution. Private keys are not the same as our
+private matters, and until we can encrypt data directly to and from
+our brains, the "analog hole" will be a real problem. With Betrusted,
+the complete loop of components from the keyboard to the display has
+been curated for transparency and simplicity, thus minimizing those
+attack surfaces that cannot be cryptographically secured.
 
-Therefore, correctly scoping the HCI aspect is critical. Betrusted's
-HCI scope includes text and voice messaging support.
+### Self-sealing
 
-* The [HCI rationale](/hci-rationale/) page explores the core HCI
-requirements.
-* The [betrusted architecture](/betrusted-architecture/) page covers
-how HCI and security requirements come together into a single device.
+“Three can keep a secret, if two of them are dead”. As Benjamin
+Franklin acutely observed, relying on trusted third parties to
+provision our keys is imprudent: self-sealing is the only way to keep
+a secret. Betrusted requires no special tools, NDAs, or third-party
+expertise to provision the system with secrets: it can generate and
+seal its own private keys on-chip in a transparent and open
+manner. 
 
-## Building betrusted
+# Our Solution
 
-Trust starts with transparency. Food is labelled with their
-ingredients, and subject to routine tests for quality and
-contamination. This keeps us safe from foodborne illnesses. As long as
-technology remains a black box, we should not be surprised that bad
-actors can hide viruses in our devices.
+Security is hard to get right, and even the tiniest crack can be
+enough of a toehold for attackers to compromise the entire
+system.
 
-Betrusted aims to build a full technology stack, including silicon,
-device, OS, and UX, that is open for inspection and verification by
-anyone: experts, governments, and users are free to audit, critique,
-confirm and improve its ability to keep secrets. You, the user, get to
-pick which version or provider for betrusted you trust the most. Thus,
-the only secrets in betrusted are the ones you choose to seal in it.
+Betrusted takes the approach of a co-designed hardware and software
+solution, because many of the cracks occur at the boundary of hardware
+and software. That being said, each element of Betrusted is
+potentially useful for non-security critical applications in their own
+right. Despite our integrated philosophy, each element is modularized
+so others can leverage our efforts for their own needs. Here is a
+brief overview of the elements that will make up Betrusted.
 
-The depth of this tech stack represents a significant engineering
-effort, spanning multiple disciplines across the techology
-spectrum. We welcome the contributions of all free/libre software developers:
-please visit [our github repo](https://github.com/betrusted-io/).
+## Hardware: A Precursor to Betrusted
 
-The project is currently at the early hardware prototype stage. The
-current plan divides the project into three phases: a developer-only
-alpha; an early-adopter beta; and finally, a consumer-ready product.
+<center><a href="https://betrusted.io"><img src="https://bunniefoo.com/precursor/precursor_to_betrusted.png" width="50%"></a></center>
 
-Learn more about the [betrusted development plan](/dev-plan/).
+The development hardware for Betrusted is available as an
+application-neutral platform called Precursor. It was developed in
+part with funding through the [NGI0 PET Fund](https://nlnet.nl/PET), a
+fund established by NLnet with financial support from the European
+Commission's [Next Generation Internet](https://ngi.eu/) programme.
 
-## Betrusted device concept
+<center><img src="https://nlnet.nl/logo/banner.png" width="15%"> <img src="https://nlnet.nl/image/logos/NGI0_tag.png" width="15%"></center>
 
-**Betrusted is not a phone**: it is a secure enclave with auditable
-input and output surfaces. Betrusted relies on sharing your existing
-connectivity -- such as your phone or cable modem -- to access the
-Internet. Say you're on the road and you want to securely message a
-friend. You would tether betrusted to your phone's wifi, so that the
-phone is just an untrusted relay for encrypted messages coming too and
-from betrusted. The only place the decrypted messages will ever appear
-is on the trusted screen of a betrusted device.
+At 7.2mm thin, Precursor is a pocketable mobile hardware development
+platform for secure applications. It embodies the principles of
+transparency, simplicity, completeness and self-sealing in a physical
+form. At its core lies not a CPU, but an FPGA, so that users are
+empowered to build their processors from scratch and know there are no
+flaws or backdoors in the architecture that could lead to security
+compromises.
 
-The first generation of betrusted will incorporate a WiFi
-interface. Read more about how [betrusted handles
-networking](/betrusted-architecture/#network-interface) to understand
-how your betrusted can be extended to handle your favorite network
-interface.
+<img src="https://bunniefoo.com/precursor/precursor_eightview.jpg">
 
-As a secondary device, betrusted aims to occupy a minimal footprint.
-The typical usage scenario integrates betrusted into the protective
-case of your existing mobile phone. This usage scenario requires
-betrusted to be physically as thin as practical. This "thin as
-practical" criteria influences virtually all of the design decisions
-around the device hardware.
+To learn more about Precursor and how to support the project, please visit <a
+href="https://www.crowdsupply.com/sutajio-kosagi/precursor">CrowdSupply,
+our distribution and crowdfunding partner</a>, for more information.
 
-betrusted is also designed with a special low-power consumption
-"memory LCD" screen that can display information all day without
-draining its battery. This always-on feature allows betrusted to serve
-as a kind of notepad for your life's private details. For example,
-saving bitmap images of your airplane boarding passes on betrusted
-allows you to board an airplane without having to turn on your phone.
+## Xous: Extending Memory Safety to the OS
 
-Below are some concepts to give an idea of what the betrusted device
-might eventually look like.
+<a href="https://github.com/betrusted-io/xous-core">Xous</a> is the
+microkernel OS for Betrusted. It's written in Rust, and not just
+because Rust is a trendy language. Xous extends Rust-style memory
+borrow checking to the operating system level. Unlike POSIX systems
+which treat everything like a file, Xous uses the <em>Message</em> as its
+fundamental data unit. Memory is shared between processes as a
+Message, with attributes of Borrow, Mutable Borrow, or Move. Processes
+"own" specific pages of memory, and attempts to access other memory
+results in a "panic". This is identical in concept to inter-thread
+communication in normal Rust. The hope is that by matching the OS
+level concepts around sharing memory between threads to the underlying
+language used to implement programs, we can eliminate or greatly
+reduce a large class of memory-safety related bugs.  Of course, Xous
+can unsafely run binaries written in any language, but the OS-level
+bindings will be Rust-native, as opposed to C-native.
 
-### First-Generation Alpha Hardware
+Xous' Message model for memory sharing also facilitates cross-platform
+development. This is because Messages can also be implemented by
+sending data over a network socket, meaning that the kernel and its
+services need not be restricted to run on a single physical machine.
+This enables easier debugging when actual hardware is unavailable.  It
+also enables the use of traditional tools such as profilers on the
+kernel when running on the desktop. You can try it out now by following the
+directions at the <a
+href="https://github.com/betrusted-io/xous-core">Xous github page</a>.
 
-The alpha hardware is implemented using a FPGA containing a RISC-V
-soft core. The primary goal of this phase is to solidify the specs of
-the eventual betrusted system through development and testing on a
-looks-like, works-like prototype.
+## PDDB: Extending Your Safety to the "Filesystem"
 
-![](assets/images/betrusted-quarter2.jpg)
+The problem with building a device that is extremely good at keeping
+secrets is that it turns the user into the weakest link. 
 
-Above is a photo of an early alpha hardware unit. A superset of
-proposed features are represented in this prototype to facilitate HCI
-experimentation.
+<center><a href="https://xkcd.com/538/"><img src="https://imgs.xkcd.com/comics/security.png"></a></center>
 
-Read more about the [alpha hardware FPGA](/betrusted-architecture/#developer-fpga-system).
+In practice, authorities need not even go so far as <a
+href="https://en.wikipedia.org/wiki/Rubber-hose_cryptanalysis">rubber-hose
+cryptanalysis</a> to obtain passwords; simply demanding a user's
+passwords at Customs as a pre-condition for entry into a country has
+become a normalized deviance.
+
+Therefore, enhanced security must come hand-in-hand with enhanced
+plausible deniability (PD) of any secrets that may or may not be
+contained within the system. PD is possible on traditional systems,
+but it is tricky; it is hard to train user to use the toolss, and easy
+for apps to accidentally leave incriminating traces. It is also hard
+to say for sure on modern SSDs if data has been actually deleted or
+merely de-allocated.
+
+The Plausibly Deniable DataBase (PDDB) is our answer-in-development to
+this problem. We plan to take advantage of the Message-oriented nature
+of Xous and our tight integration with the Precursor hardware layer to
+entirely do away with the notion of files and volumes. Instead, data
+is stored in a database as a set of key/value pairs that are
+associated with a security state. The set of user-visible data is
+transparently adjusted depending upon the set of PIN codes currently
+authorized by the user. We blend patterns of secure and insecure data
+access together all the way down to the hardware, while keeping
+end-user applications largely oblivious to the entire PD process. For
+example, the process of deleting a data set is identical to that of
+forgetting a PIN code. This makes it difficult to determine at the
+point of inspection if a complete set of PIN codes have been turned
+over.
+
+
+### Additional Planned Features 
+
+Making it easy for users to visually identify security-critical
+interactions is an essential countermeasure to phishing. We are in the
+process of building a simple graphical toolkit for building user
+interfaces that factor security into the rendering of graphics. It is
+particularly dangerous to allow applications to render full-screen
+bitmaps, as it gives compromised applications a way to trick users
+into divulging secrets. The graphics subsystem provided by Betrusted
+will put a special border around any bitmaps coming from an untrusted
+source, while reserving a region of the screen exclusively for icons
+that indicate the current security state of the system.
+
+
+# Development Status
+
+Delivering a bespoke, hardware-to-user-app solution is a multi-year
+development process. As of September 2020, we're about two years
+into the project, and we are:
+
+* Currently finalizing the Precursor hardware platform and preparing for crowdfunding
+* In alpha stages of Xous development, with a PoC kernel running in emulation mode
+* In the conceptual (napkin-sketch) stages of PDDB development
+* In planning stages of higher-level features such as graphics and end user applications
 
 # More Info
 
@@ -141,9 +205,10 @@ technical information. The main [betrusted github
 repository](https://github.com/betrusted-io) will also begin to fill
 in as more technical details come online.
 
-## Morsels you may be interested in
+## Tech morsels you may be interested in
 
 * [Avalanche Noise Source](/avalanche-noise) design notes
+* [Curve25519 Engine](https://ci.betrusted.io/betrusted-soc/doc/engine.html) documentation
 
 ## Who is behind betrusted?
 
