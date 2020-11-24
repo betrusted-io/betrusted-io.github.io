@@ -151,7 +151,7 @@ become a normalized deviance.
 Therefore, enhanced security must come hand-in-hand with enhanced
 plausible deniability (PD) of any secrets that may or may not be
 contained within the system. PD is possible on traditional systems,
-but it is tricky; it is hard to train user to use the toolss, and easy
+but it is tricky; it is hard to train user to use the tools, and easy
 for apps to accidentally leave incriminating traces. It is also hard
 to say for sure on modern SSDs if data has been actually deleted or
 merely de-allocated.
