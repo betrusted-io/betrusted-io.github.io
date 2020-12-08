@@ -78,7 +78,7 @@ combination of quantum zener plus avalanche effects, as they have
 opposite temperature coefficients and can lead to a more
 temperature-stable voltage reference.
 
-They hybrid engineering of the zener diodes has lead to some confusion
+The hybrid engineering of the zener diodes has lead to some confusion
 when selecting suitable parts as an avalanche noise source. However,
 zener diodes above 7V or so start to rely more and more on avalanche
 breakdown, so one may more accurately call a high voltage zener diode
