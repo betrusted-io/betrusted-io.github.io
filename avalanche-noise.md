@@ -452,16 +452,16 @@ the generator ends up in a stable state.
 
 The image below compares the value on CAP1 (cyan) to the output of the TRNG (yellow).
 
-![](assets/images/modnoise/y-OUTPUT_c-CAP1.png)
+![](assets/images/modnoise/y_OUTPUT_c-CAP1.png)
 
 Below zooms in more to focus on the settling time of the op-amp into the capacitor.
 
-![](assets/images/modnoise/y-OUTPUT_c-CAP1_cursors.png)
+![](assets/images/modnoise/y_OUTPUT_c-CAP1_cursors.png)
 
 Below shows the output of the TRNG compared to the voltage on the CAPA node. If you
 draw an imaginary line at VDD/2 through the cyan trace, you get the yellow trace.
 
-![](assets/images/modnoise/y-OUTPUT_c-CAPA.png)
+![](assets/images/modnoise/y-OUTPUT_c-CAP_A.png)
 
 Below compares a non-overlapping clock phase to CAP1. Here you can see how when the
 phase is driven high, the capacitor is engaged to the op-amp and it changes value;
