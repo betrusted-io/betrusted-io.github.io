@@ -367,13 +367,13 @@ entropy rate to ~200kbps, I'm able to use lower-power devices, resulting
 in a current consumption of 65uA @ 1.8V (note the lower Vdd). At this
 power consumption, the bias resistors matter, so I add an extra 9uA for
 the Vref bias ladder for a total of 74uA @ 1.8V = 0.13mW. This power
-consumptions is virtually negligible, and is small enough that power
+consumption is virtually negligible, and is small enough that power
 control to the generator is done by directly powering the op-amp and
 comparator off of an FPGA GPIO line.
 
 If a higher entropy rate is desired, this could be accomplished by
 swapping out the TLV9001 op-amp for a pin-compatible TLV9061 device.
-The figure-of-merit to pay attention to is the settling time (t_s) into
+The figure-of-merit to pay attention to is the settling time (t<sub>s</sub>) into
 a capcitive load, which is specified in the datasheets. The TLV9001
 has a settling time of 2.5-3us at an Iq of 60uA; the TLV9061 has a
 settling time of 0.5-1us at an Iq of 538uA. Thus one can improve the speed
@@ -395,8 +395,8 @@ implementation considerations:
   given is that by reducing the entropy from "perfect", we can measure it. The intention is
   this source would be fed into a whitener after analysis. In practice, it also seems that
   a loop gain of 2.0 leads to the generator falling into stable states; likely due to
-  hysteresis and component tolerances conspiring to stick it one way or the other. Thus there
-  is some art in tuning the generator.
+  hysteresis and component tolerances conspiring to stick it one way or the other. _Thus there
+  is some art in tuning the generator_.
 - The Infinite Noise Generator also has a 10k "mystery resistor" (R9 on its schematic) which
   I'm guessing is there to ensure that the generator always starts up, and does not get
   stuck in a stable state. In this design, the 1M dividers across the storage capacitors
@@ -408,11 +408,33 @@ implementation considerations:
   noticeable droop when the capacitor is in storage and a bump during switching transients, causing
   a significant reduction in entropy. Therefore, the larger capacitance is preferred.
   Note that the 1000pF capacitor is expected to contribute about 0.15mW of power
-  (fsw * 0.5 * C * V^2, fsw = 200kHz, C=1000pF, V = 1.8 * 0.707)
+  (fsw * 0.5 * C * V<sup>2</sup>, fsw = 200kHz, C=1000pF, V = 1.8 * 0.707)
 
 For the design as shown above to work, it's crucial for clocks PHASE0 and PHASE1 to be
 non-overlapping. This ensures that there is no bleed-through of charge from CAP0 to CAP1.
-We use two GPIOs from the FPGA to generate these clocks.
+We use two GPIOs from the FPGA to generate non-overlapping clocks, which is fairly easy to do
+using a state machine and some counters.
+
+I would like to point out that, like the avalanche generator, there is
+a vector for an attacker to bias the modular noise generator with a
+remote EM source. In the case of the avalanche generator, the
+possibility translates to introducing stray currents on the sensitive
+avalanche generator diode output, which operates at micro-ampere
+levels. These stray currents can imprint a repetative or relatively
+fixed waveform superimposed on the noise waveform, which if a simple
+1-bit discriminator is used, could result in the generator effectively
+being stuck in a single state. In the case of the modular noise
+generator, it's argued that the modular noise amplifier simply
+amplifies all the noise, and does not care if it comes from shot
+noise, EM, thermal, cross-talk. However, if an attacker can correlate
+its EM timing to that of the modular noise generator's period, it may
+be able to influence the voltage reference for the comparator. Stray
+currents introduced onto this node can repetitively influence the
+"decision" of the comparator one way or the other, causing the entropy
+to gain a correlation to an external EM field, such that the modular
+noise generator eventually enters a "stuck" state. Thus, both
+generators have a potential remote EM influence threat, but both
+generators also have correspondingly trivial mitigations to this.
 
 ![](assets/images/modnoise/modnoise_board.jpg)
 
@@ -425,6 +447,12 @@ on the edge of the board plus one through-hole are used to contact
 existing points used in the existing avalanche generator, which are
 then re-purposed to drive the modular noise generator through the magic
 of FPGAs.
+
+The astute observer will note the random resistor hanging off of a
+solder pad on the bottom edge of the carrier board, that's just a
+technique I use to "save" components when swapping stuff out to try
+different things, as a component tacked onto a pad has minimal
+parisitic effect on the circuit.
 
 ## Characterization
 
@@ -478,7 +506,8 @@ issues are clearly visible.
 ![](assets/images/modnoise/100pf_cap_fs.png)
 
 It's expected that this noise source should fall short of
-generating 1 bit of entropy per bit (should be 0.86).
+generating 1 bit of entropy per bit (should be 0.86). I did a short
+data collection run, and here are the initial results.
 
 `ent` returns the following values:
 
@@ -495,19 +524,21 @@ also flags this reduction of entropy:
    diehard_birthdays|   0|       100|     100|0.00006712|   WEAK
 ```
 
-The higher-than-expected performance may be due to the fact that
+The higher-than-expected performance is probably due to the fact that
 this characterization run was only considering the output of one
 phase of the modular multiplier, and therefore the bitrate was half
 of the expected value and we're throwing away every other sample.
 
-For the next run, I increased the loop gain to 1.92 should improve
-entropy to about 0.93 bits per bit. This was done by changing out the
-gain resistor R5 to 9.1k. This change also necessitated removing R7
-to force a bias onto one of the storage caps, otherwise the design
-tended to phase in and out of a stable state, causing long runs
-of 1's or 0's. 
+For the next data collection run, I increased the loop gain to 1.92,
+which should improve entropy to about 0.93 bits per bit. This was done
+by changing out the gain resistor R5 to 9.1k. Note that this change
+initially caused the modular noise generator to get stuck in a stable
+state, so that the output was stuck at `1`. Removing R7 forced a
+bias onto one of the storage caps, which pushed the generator into
+the desired metastable state.
 
-In this run, we also correct the sampling rate error.
+In this run, we also correct the sampling rate error, so it's a little hard
+to compare to the previous data.
 
 `ent` returns the following values:
 
@@ -517,8 +548,8 @@ Entropy = 7.547037 bits per byte.
 Entropy = 7.542359 bits per byte.
 ```
 
-Which is about 0.945 bits per bit of entropy and closer to the
-expected result.
+Which is about 0.945 bits per bit of entropy, and closer to the
+expected result of 0.93 bits per bit.
 
 Dieharder is not at all happy about the reduction in entropy:
 
@@ -537,24 +568,24 @@ fall into stable states when the entropy rate is too high.
 
 When compared to the existing avalanche generator, we find that:
 
-- Area: modular noise generator is slightly smaller
-- Power: avalanche = 1.7mW; modular noise generator can reduce to as
+- *Area*: the modular noise generator is slightly smaller
+- *Power*: avalanche = 1.7mW; modular noise generator can reduce to as
   little as 0.13mW, but practically speaking we'd tune the generator
   to ~1mW for greater entropy rates. So the power is about the same,
   and either way, negligible compared to the system.
-- Entropy rate: at 0.13mW, we generate ~200kbps of entropy per second;
+- *Entropy rate*: at 0.13mW, we generate ~200kbps of entropy per second;
   at 1mW we may be able to improve that to 400-500kbps. Avalanche
   can generate about 800kbps. 
-- Entropy quality: modular noise generator outputs ~0.86-0.95 bits
+- *Entropy quality*: modular noise generator outputs ~0.86-0.95 bits
   of entropy. Avalanche generator outputs close to 1.0 bits of entropy
   per bit at full rate without an additional whitener.
-- Stability: the reduced entropy of the modular noise generator is
+- *Stability*: the reduced entropy of the modular noise generator is
   necessitated by the fact that it falls into stable (e.g. constant output)
-  states if the entropy rate gets too high. The avalanche effect is robust
-  so long as the bias voltage is high enough, and the temperature is lower than
-  80C.
-- Startup lag: in the modular noise generator, the first 20-30 bits of
-  entropy are not usable, so the lag is about 0.15ms. The avalanche generator
+  states if the entropy rate gets too high. On the other hand, the avalanche effect is
+  emperically determined to be robust so long as the bias voltage is high enough,
+  and the temperature is lower than 80C.
+- *Startup lag*: in the modular noise generator, the first 20-30 bits of
+  entropy are not usable, so the startup lag is about 0.15ms. The avalanche generator
   requires a high-voltage regulator to stabilize, which takes about 20-50ms. 
 
 Thus, while the modular noise generator can improve on area and power, from
@@ -562,34 +593,53 @@ a system engineering perspective, these are not significant compared to
 the rest of Precursor. Entropy rate generation, while inferior, is probably
 acceptable from a system design standpoint.
 
-However, the greatest concerns are around entropy quality and
-stability. The controllable quality of the modular noise source is
-argued to be a feature, not a bug -- it may allow for simple and fast
-verification that the device is working correctly; and furthermore,
-all entropy sources in Precursor will be coupled, in software, with an
-optional cryptographic whitening function for defense-in-depth.
+For Precursor, the greatest system-level concerns are around entropy
+quality and stability. The argument in favor of the modular noise
+source is that the controllable entropy quality of the modular noise
+source is a feature, not a bug -- an entropy of ~0.9 bits per bit is
+low enough to be extracted with a simple, quick test, as opposed to
+the typical challeng of collecting gigabytes of entropy on a typical
+TRNG to uncover subtle biases. This has the potential to allow for
+simple and fast verification that the device is working
+correctly. Furthermore, all entropy sources in Precursor will be
+coupled, in software, with an optional cryptographic whitening
+function for defense-in-depth, so a slightly reduced source entropy
+won't have a meaningful impact on the final application entropy.
+
+This argument may have some merit, however, I hypothesize that
+the deliberate reduction in entropy to facilitate metrology is
+probably difficult to differentiate from hostile reductions in entropy
+from attackers. It's an open area of research if this reduction in
+entropy can be safely and robustly used to characterize the performance
+of an entropy source. I supect it can be; however, it would be several
+months of focused research to prove it can be.
 
 Thus the biggest concern I have with dropping the modular noise
 generator into the design at the 11th hour is the observed behavior of
 the noise generator falling into stable states. The results reported
-in the analysis above are always done after some bodges to work around
-any stable states that were encountered. Some tests even show the
-generator phasing in and out of a stuck-1 or -0 condition. The main
-culprits are probably the hysteresis of the comparator, plus component
-tolerances that tend to bias/stack the result in a particular direction
-such that when the loop gain is too high the system will get stuck.
+in the analysis above are always done _after_ some bodges to work
+around any stable states that were encountered. Some tests even show
+the generator phasing in and out of a stuck-1 or -0 condition. I
+suspect the main culprits are probably the hysteresis of the
+comparator, plus component tolerances that tend to bias/stack the
+result in a particular direction.
 
 That I cannot ascribe an analytical solution to this is problematic,
-and it's especially problematic if the situation is aggravated by corner
-cases in the analog component tolerances -- determining the extent
-of this sensitivity could only come out in mass production, at which
-point it's too late to fix.
+and it's especially problematic if the situation is aggravated by
+corner cases in the analog component tolerances -- determining the
+extent of this sensitivity might only come out in mass production, at
+which point it's too late to fix. To arrive at a robust answer to this
+would be a several month's effort at a minimum. Notably in the context
+of this project, the avalanche generator has already been scrutinized
+for several months, unlike the modular noise generator.
 
-For this reason, the modular noise generator is not swapped into the
-Precursor design, and we stay with the avalanche generator.
+I don't think it's worth it to delay the delivery of Precursor by
+several months while we prototype and confirm its robustness. Thus,
+the modular noise generator is not swapped into the Precursor design,
+and we stay with the avalanche generator.
 
-The primary concerns raised around using the avalanche generator are
-as follows:
+For completeness, here are the the primary concerns raised around
+using the avalanche generator, and the corresponding mitigations deployed:
 
 - Avalanche generators could be vulnerable to remote EM injection attacks,
   where an adversary attempts to influence the output of the generator by
@@ -597,9 +647,12 @@ as follows:
   the noise created by the avalanche diode. In Precursor, this is mitigated
   by putting a robust farday cage around the trusted domain; the amount of
   power required to induce this failure is probably high enough that it would
-  damage other circuits and/or cause physical injury to nearby people.
+  damage other circuits and/or cause physical injury to nearby people. Compact
+  circuit layouts like that empolyed in Precursor are also less sensitive to
+  external noise, because the area of the loop to capture external field
+  fluxes is that much smaller.
 - Some avalanche generators are known to be vulnerable to aging, but this
-  is, anecdotally, linked to the use of NPN transistors as avalanche generators.
+  is, at least anecdotally, linked to the use of NPN transistors as avalanche generators.
   In Precursor, we use a higher-voltage diode whose junction was explicitly
   engineered for the purpose of long-term operation in an avalanche mode.
 - Avalanche generators have an entropy output that changes with temperature.
@@ -609,14 +662,16 @@ as follows:
 
 Furthermore, there is a system-level concern around the startup lag of
 the avalanche generator. This is mitigated in part by a 32 kilobit
-deep hardware FIFO that auto-refills in the FPGA; under most real-world usage
-situations, the startup lag would never be a factor. 
+deep hardware FIFO that auto-refills once it falls below 50% in the
+FPGA; under most real-world usage situations, the startup lag would
+never be a factor.
 
-In short, the potential drawbacks of using the avalanche generator are largely
-mitigated through additional design features in Precursor, and we are sticking
-with it for production because it is well-characterized and its performance
-is less likely to be impacted by material variation in mass production than
-the modular noise generator.
+In short, the potential drawbacks of using the avalanche generator are
+largely mitigated through additional design features in
+Precursor. Thus we are sticking with it for production because it is
+well-characterized, and the impact of material variation on its
+performance is better understood than the potential impact of material
+variation on the modular noise generator.
 
 
 ### Navigation
