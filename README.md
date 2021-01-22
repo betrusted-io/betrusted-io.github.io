@@ -198,13 +198,17 @@ into the project, and we are:
 * In the conceptual (napkin-sketch) stages of PDDB development
 * In planning stages of higher-level features such as graphics and end user applications
 
-# More Info
+# Documentation
 
-Please visit the [betrusted
-wiki](https://github.com/betrusted-io/betrusted-wiki/wiki) for more
-technical information. The main [betrusted github
-repository](https://github.com/betrusted-io) will also begin to fill
-in as more technical details come online.
+* The [betrusted wiki](https://github.com/betrusted-io/betrusted-wiki/wiki) aggregates all the technical documentation for the platform.
+* The main [betrusted github repository](https://github.com/betrusted-io) is the place to hunt for anything you didn't find at the link above.
+* Video: [36C3](https://www.youtube.com/watch?v=Hzb37RyagCQ) Introducing the core principles that motivate the hardware architecture
+* Video: [LCA20](https://www.youtube.com/watch?v=_pIr3Q7gqNI) Evolution and planning of the overall project, including software layers
+* Video: [FOSSNORTH20](https://www.youtube.com/watch?v=w8BA6_9HCzk) Precursor overview talk
+* Blog: [Precursor SoC Tour](https://www.bunniestudios.com/blog/?p=5971)
+* Blog: [Precursor Mainboard tour](https://www.bunniestudios.com/blog/?p=5942)
+* Blog: [Other Precursor posts](https://www.bunniestudios.com/blog/?cat=71) hardware security evaluation, braille keyboard, hackability, mechanical and PCB design aspects.
+* Blog: [Precursor + Renode](https://xobs.io/precursor-and-renode/)
 
 ## Tech morsels you may be interested in
 
