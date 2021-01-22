@@ -8,6 +8,7 @@ defaults for everyday users. It's also open source, empowering
 advanced users to analyze, extend and explore this secure mobile
 computer.
 
+Developers can get started by [visiting our documentation wiki](https://github.com/betrusted-io/betrusted-wiki/wiki).
 
 <video width="100%" controls autoplay muted><source src="https://raw.githubusercontent.com/betrusted-io/betrusted-io.github.io/master/assets/media/betrusted_intro_450p.mp4" type="video/mp4"></video>
 [1080p version](https://bunniefoo.com/betrusted/media/betrusted_intro_1080p.mp4)
