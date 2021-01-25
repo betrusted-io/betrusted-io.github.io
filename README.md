@@ -84,7 +84,7 @@ brief overview of the elements that will make up Betrusted.
 
 ## Hardware: A Precursor to Betrusted
 
-<center><a href="https://www.crowdsupply.com/sutajio-kosagi/precursor"><img src="https://raw.githubusercontent.com/betrusted-io/betrusted-io.github.io/master/assets/images/precursor_to_betrusted.png" width="50%"></a></center>
+<center><a href="https://www.crowdsupply.com/sutajio-kosagi/precursor"><img src="https://raw.githubusercontent.com/betrusted-io/betrusted-io.github.io/blob/master/assets/images/precursor_to_betrusted.png" width="50%"></a></center>
 
 The development hardware for Betrusted is available as an
 application-neutral platform called Precursor. It was developed in
