@@ -12,7 +12,7 @@ random stream of bits. These are area and power efficient but are also
 tricky to verify. They are particularly vulnerable to [subtle mask-editing
 attacks](https://sharps.org/wp-content/uploads/BECKER-CHES.pdf).
 
-In addition to an on-die RNG, Betrusted's entropy pool in reinforced
+In addition to an on-die RNG, Betrusted's entropy pool is reinforced
 by an externally testable noise source. Avalanche noise sources fit
 the bill, as they can delivery reasonably high quality entropy and
 verification can be done using a low-end "economy" oscilloscope.
