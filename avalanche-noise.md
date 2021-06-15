@@ -2,7 +2,7 @@
 
 # Motivation
 
-A high quality noise source is necessary for any good crytpographic
+A high quality noise source is necessary for any good cryptographic
 enclave. In fact, multiple high quality noise sources are preferable,
 if the budget allows.
 
@@ -12,7 +12,7 @@ random stream of bits. These are area and power efficient but are also
 tricky to verify. They are particularly vulnerable to [subtle mask-editing
 attacks](https://sharps.org/wp-content/uploads/BECKER-CHES.pdf).
 
-In addition to an on-die RNG, betrusted's entropy pool in reinforced
+In addition to an on-die RNG, Betrusted's entropy pool in reinforced
 by an externally testable noise source. Avalanche noise sources fit
 the bill, as they can delivery reasonably high quality entropy and
 verification can be done using a low-end "economy" oscilloscope.
@@ -109,7 +109,7 @@ diodes meet this criteria. ESD protection diodes in particular care
 little about how much avalanche noise is generated, and may prioritize
 lower leakage in reverse bias instead.
 
-### NPN transitor junctions
+### NPN transistor junctions
 
 A discussion of B-E junctions of NPN transistors as an avalanche
 noise source is warranted due to its popularity in inexpensive
@@ -130,7 +130,7 @@ isn't a clear line; in fact, NPN transistors with breakdowns
 approaching the 5V range exhibit behavior closer to zener breakdown
 (quantum tunneling) and are thus less suitable as a noise source.
 
-Furthermore, because NPN transitors are not well-characterized for
+Furthermore, because NPN transistors are not well-characterized for
 their reverse B-E breakdown, the quality of the noise generated can
 vary widely between manufacturers and models. The Internet also
 contains anecdotes that over time the B-E junction "wears out" over
@@ -374,7 +374,7 @@ comparator off of an FPGA GPIO line.
 If a higher entropy rate is desired, this could be accomplished by
 swapping out the TLV9001 op-amp for a pin-compatible TLV9061 device.
 The figure-of-merit to pay attention to is the settling time (t<sub>s</sub>) into
-a capcitive load, which is specified in the datasheets. The TLV9001
+a capacitive load, which is specified in the datasheets. The TLV9001
 has a settling time of 2.5-3us at an Iq of 60uA; the TLV9061 has a
 settling time of 0.5-1us at an Iq of 538uA. Thus one can improve the speed
 of the generator by about 3x, at a roughly 7.5x increase in power.
@@ -420,7 +420,7 @@ a vector for an attacker to bias the modular noise generator with a
 remote EM source. In the case of the avalanche generator, the
 possibility translates to introducing stray currents on the sensitive
 avalanche generator diode output, which operates at micro-ampere
-levels. These stray currents can imprint a repetative or relatively
+levels. These stray currents can imprint a repetitive or relatively
 fixed waveform superimposed on the noise waveform, which if a simple
 1-bit discriminator is used, could result in the generator effectively
 being stuck in a single state. In the case of the modular noise
@@ -452,7 +452,7 @@ The astute observer will note the random resistor hanging off of a
 solder pad on the bottom edge of the carrier board, that's just a
 technique I use to "save" components when swapping stuff out to try
 different things, as a component tacked onto a pad has minimal
-parisitic effect on the circuit.
+parasitic effect on the circuit.
 
 ## Characterization
 
@@ -471,7 +471,7 @@ that interleave between the two capacitors. The CAP_A node is nice and crisp, as
 expected. The CAP1 node shows the settling time of the op-amp: as the op-amp is multiplexed
 between between two capacitors, half the time the capacitor is driven by the op-amp,
 and the other half of the time it's being "read out" as the input to the op-amp.
-One can see that the op-amp uses up almost all of the alloted 5us to settle to its
+One can see that the op-amp uses up almost all of the allotted 5us to settle to its
 final value. Experiments to reduce the settling time indicate this is about as fast
 as you can realistically run the circuit with this op-amp; if the period is shortened,
 the generator ends up in a stable state.
@@ -582,7 +582,7 @@ When compared to the existing avalanche generator, we find that:
 - *Stability*: the reduced entropy of the modular noise generator is
   necessitated by the fact that it falls into stable (e.g. constant output)
   states if the entropy rate gets too high. On the other hand, the avalanche effect is
-  emperically determined to be robust so long as the bias voltage is high enough,
+  empirically determined to be robust so long as the bias voltage is high enough,
   and the temperature is lower than 80C.
 - *Startup lag*: in the modular noise generator, the first 20-30 bits of
   entropy are not usable, so the startup lag is about 0.15ms. The avalanche generator
@@ -598,7 +598,7 @@ quality and stability. The argument in favor of the modular noise
 source is that the controllable entropy quality of the modular noise
 source is a feature, not a bug -- an entropy of ~0.9 bits per bit is
 low enough to be extracted with a simple, quick test, as opposed to
-the typical challeng of collecting gigabytes of entropy on a typical
+the typical challenge of collecting gigabytes of entropy on a typical
 TRNG to uncover subtle biases. This has the potential to allow for
 simple and fast verification that the device is working
 correctly. Furthermore, all entropy sources in Precursor will be
@@ -611,7 +611,7 @@ the deliberate reduction in entropy to facilitate metrology is
 probably difficult to differentiate from hostile reductions in entropy
 from attackers. It's an open area of research if this reduction in
 entropy can be safely and robustly used to characterize the performance
-of an entropy source. I supect it can be; however, it would be several
+of an entropy source. I suspect it can be; however, it would be several
 months of focused research to prove it can be.
 
 Thus the biggest concern I have with dropping the modular noise
@@ -645,10 +645,10 @@ using the avalanche generator, and the corresponding mitigations deployed:
   where an adversary attempts to influence the output of the generator by
   irradiating the target with radio waves of sufficient power to swamp out
   the noise created by the avalanche diode. In Precursor, this is mitigated
-  by putting a robust farday cage around the trusted domain; the amount of
+  by putting a robust Faraday cage around the trusted domain; the amount of
   power required to induce this failure is probably high enough that it would
   damage other circuits and/or cause physical injury to nearby people. Compact
-  circuit layouts like that empolyed in Precursor are also less sensitive to
+  circuit layouts like that employed in Precursor are also less sensitive to
   external noise, because the area of the loop to capture external field
   fluxes is that much smaller.
 - Some avalanche generators are known to be vulnerable to aging, but this
