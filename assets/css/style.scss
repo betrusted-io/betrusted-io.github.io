@@ -1,6 +1,8 @@
 ---
 ---
 
+@import 'jekyll-theme-cayman';
+
 $header-heading-color: #38BA5A;
 $header-bg-color: #FFFFFF;
 $header-bg-color-secondary: #F0FFF0;
@@ -12,7 +14,7 @@ $header-bg-color-secondary: #F0FFF0;
     text-align: center;
     background-color: $header-bg-color;
     /*    background-image: linear-gradient(120deg, $header-bg-color-secondary, $header-bg-color); */
-    background: url('/assets/images/betrusted-concept-banner.jpg') no-repeat top center fixed;
+    background: url('/assets/images/banner-background-precursor.jpg') no-repeat top center fixed;
     background-size: contain;
 
     @include large {
@@ -70,4 +72,72 @@ $header-bg-color-secondary: #F0FFF0;
 	  margin-left: 0;
       }
   }
+}
+
+.features-grid {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  margin: 0.5em 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: $medium-breakpoint) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.feature-item {
+  border-color: $border-color;
+  background-color: $header-bg-color;
+  color: $section-headings-color;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 18px;
+  padding: 1rem;
+  background: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feature-item a {
+  display: flex;
+  align-items: flex-start;
+  text-decoration: none;
+  color: inherit;
+}
+
+.feature-item img {
+  max-width: 80px;
+  height: auto;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.feature-text h3 {
+  margin: 0 0 5px;
+}
+
+.feature-text p {
+  margin: 0;
+  color: $body-text-color;
+}
+
+.feature-item img {
+  max-width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.feature-item a:hover {
+  text-decoration: none;
+}
+
+.feature-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
