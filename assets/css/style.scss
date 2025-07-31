@@ -14,7 +14,7 @@ $header-bg-color-secondary: #F0FFF0;
     text-align: center;
     background-color: $header-bg-color;
     /*    background-image: linear-gradient(120deg, $header-bg-color-secondary, $header-bg-color); */
-    background: url('/assets/images/banner-background-precursor.jpg') no-repeat top center fixed;
+    background: url('/assets/images/banner-background-precursor-gray.jpg') no-repeat top center fixed;
     background-size: contain;
 
     @include large {
