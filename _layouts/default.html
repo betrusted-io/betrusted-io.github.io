@@ -33,13 +33,46 @@
       <a href="https://betrusted.io"><center><img src="/assets/images/betrusted-banner.png" width="35%"></center></a>
       <!-- <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2> -->
       <a href="https://github.com/betrusted-io" class="btn-dark">View on GitHub</a>
-      {% if site.show_downloads %}
-        <a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
-        <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
-      {% endif %}
     </header>
 
     <main id="content" class="main-content" role="main">
+      <p>
+        Betrusted is an initiative to put you in control of your secrets.
+        No ads. No AIs. No mysterious hardware black boxes. Nothing
+        between you, the math, and the immutable laws of physics: Betrusted is full-stack
+        transparency, purpose-built to facilitate inspection and audit.
+        We aim to provide the smallest set of features necessary to keep end-to-end
+        secrets, while providing safe, user-friendly defaults for everyday use.
+        </p><p>
+        Betrusted's scope extends from silicon to user software. It is realized
+        in a series of open source projects, each one tackling a different part
+        of the stack.
+      </p>
+    <div class="features-grid">
+      {% assign features =
+        "
+          Xous|/assets/images/xous_logo.png|https://betrusted.io/xous-book/|A pure-Rust microkernel OS built around async message passing and hardware-enforced memory protection. Its straightforward code and minimal dependency set make it easy to inspect and verify.;
+          betrusted-soc|/assets/images/core_complex.png|https://github.com/betrusted-io/betrusted-soc|A full open-RTL system-on-chip design, based on the VexRiscv CPU core, designed to run on FPGAs.;
+          Precursor|/assets/images/precursor-logo.png|https://precursor.dev|An FPGA-based physical embodiment of Xous + betrusted-soc. It targets enthusiasts, developers, and people who take security seriously. It is in-stock and available for purchase today.;
+          vault|/assets/images/vault.png|https://www.crowdsupply.com/sutajio-kosagi/precursor/updates/xous-release-v0-9-9-vault-authentication-app-and-more|A Xous app written for Precursor that provides an all-in-one security credential management solution. It manages plaintext passwords, TOTP tokens, and FIDO2 credentials in a single framework.;
+          IRIS|/assets/images/iris-logo-gh.png|https://bunnie.org/iris| <em>InfraRed, in-situ</em>: a method for non-destructively inspecting silicon chips, after they have been integrated into products. IRIS is a pillar supporting the case for evidence-based trust in silicon.;
+          Baochip|/assets/images/baochip-logo.png|https://baochip.com| <em>Coming soon!</em><!-- A mostly-open RTL TSMC 22ULL chip, expressly built for IRIS inspection. It points the way toward affordable, consumer-oriented embodiments of the Betrusted vision. It will be launched around the end of 2025.-->
+        " | split: ";"
+      %}
+      {% for item in features %}
+        {% assign parts = item | split: "|" %}
+        <div class="feature-item">
+          <a href="{{ parts[2] | strip }}" target="_blank" rel="noopener">
+            <img src="{{ parts[1] | strip }}" alt="{{ parts[0] | strip }}">
+            <div class="feature-text">
+              <h3>{{ parts[0] | strip }}</h3>
+              <p>{{ parts[3] | strip }}</p>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+
       {{ content }}
 
       <footer class="site-footer">

@@ -36,6 +36,29 @@
     </header>
 
     <main id="content" class="main-content" role="main">
+    <h2>Our Features</h2>
+    <div class="features-grid">
+      {% assign features =
+        "
+          Feature One|/assets/images/avalanche-circuit.png|https://example.com/feature1|Short text about feature one.,
+          Feature Two|/assets/images/avalanche-devices.png|https://example.com/feature2|Short text about feature two.,
+          Feature Three|/assets/images/bt-blockdiag1.png|https://example.com/feature3|Short text about feature three.,
+          Feature Four|/assets/images/tek0035.png|https://example.com/feature4|Short text about feature four.
+        " | split: ","
+      %}
+
+      {% for item in features %}
+        {% assign parts = item | split: "|" %}
+        <div class="feature-item">
+          <a href="{{ parts[2] | strip }}" target="_blank" rel="noopener">
+            <img src="{{ parts[1] | strip }}" alt="{{ parts[0] | strip }}">
+            <h3>{{ parts[0] | strip }}</h3>
+            <p>{{ parts[3] | strip }}</p>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+
       {{ content }}
 
       <footer class="site-footer">
