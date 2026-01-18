@@ -58,6 +58,8 @@ manner.
 
 ## Media
 
+* Video: [39C3](https://media.ccc.de/v/39c3-xous-a-pure-rust-rethink-of-the-embedded-operating-system) Xous and Baochip
+* Video: [38C3](https://media.ccc.de/v/38c3-iris-non-destructive-inspection-of-silicon) Introduction to IRIS
 * Video: [36C3](https://www.youtube.com/watch?v=Hzb37RyagCQ) Introducing the core principles that motivate the hardware architecture
 * Video: [LCA20](https://www.youtube.com/watch?v=_pIr3Q7gqNI) Evolution and planning of the overall project, including software layers
 * Video: [FOSSNORTH20](https://www.youtube.com/watch?v=w8BA6_9HCzk) Precursor overview talk
